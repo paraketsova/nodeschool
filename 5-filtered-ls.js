@@ -14,4 +14,32 @@
    
   The list of files should be printed to the console, one file per line. You  
   must use asynchronous I/O.  
+--------------
+  function countNewlines() {
+//   const filePath = process.argv[2];
+//   fs.readFile(filePath, function doneReading(err, fileContents) {
+//     if (err) console.log(err);
+
+//     const to_string = fileContents.toString();
+//     const split_lines = to_string.split("\n").length - 1;
+//     console.log(split_lines);
+//   })
+// }
 */
+
+const fs = require("fs");
+const path = require("path");
+const dirPath = path.join(__dirname, process.argv[2])
+const fileExtension = process.argv[3];
+
+function printList () {
+  fs.readdir(dirPath, function doneReading(err, files) {
+    if (err) console.log(err);
+
+    //надо сделать forEach  видимо.
+    filesList = files.filter(function(e){
+      return path.extname(e).toLowerCase() === ('.' + fileExtension)
+    });
+    console.log(filesList);
+  })
+}
