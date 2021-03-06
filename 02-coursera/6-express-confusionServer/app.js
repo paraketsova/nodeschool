@@ -6,6 +6,8 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var dishRouter = require('./routes/dishRouter');//добавили наш собственный роутер
+var drinkRouter = require('./routes/drinkRouter');//добавили ещё
 
 var app = express();
 
@@ -21,6 +23,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/dishes',dishRouter);//добавили для собственного роутера
+app.use('/drinks',drinkRouter);//и ещё для одного
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
